@@ -1,0 +1,12 @@
+{
+    "entry": {
+        "numberSelector": ".stats.w-container .h2.green",
+        "labelSelector": ".stats.w-container .h4.h4",
+        "expectedNumber": "17+ Years",
+        "expectedLabel": "of Industry Experience",
+        "expectedFontSize": "40px",
+        "expectedFontWeight": "300",
+        "expectedLabelFontSize": "20px",
+        "expectedLabelFontWeight": "300"
+    }
+}
