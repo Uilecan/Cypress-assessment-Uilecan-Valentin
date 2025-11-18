@@ -1,6 +1,6 @@
 class HomePage {
     open() {
-        cy.visit('https://airportlabs.com/')
+        cy.visitAirportLabs();
     }
 
     getSectionTitleElement() {

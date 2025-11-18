@@ -6,5 +6,6 @@ module.exports = defineConfig({
     supportFile: 'cypress/support/e2e.js',
     defaultCommandTimeout: 8000,
     video: false,
+    watchForFileChanges: false
   },
 });
