@@ -12,8 +12,7 @@ describe('Scenario 4 | Logo checks (positive + negative)', () => {
             expect(width).to.be.greaterThan(0)
             expect(height).to.be.greaterThan(0)
         })
-
-        // Negative test: logo should NOT have zero width/height
+        
         HomePage.getLogo().should(($img) => {
             expect($img.width()).to.not.equal(0)
             expect($img.height()).to.not.equal(0)

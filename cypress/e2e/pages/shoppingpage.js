@@ -19,6 +19,14 @@ class ShoppingPage {
 
     getFirstAvailableCard() {
         return cy.get('.card-item').then($cards => {
+            const foundSamsung = Cypress.$($cards).filter((i, el) => {
+                const hasButton = Cypress.$(el).find('button').text().includes('Adauga in Cos');
+                const hasSamsung = Cypress.$(el).find('.card-v2-title').text().toLowerCase().includes('samsung');
+                return hasButton && hasSamsung;
+            });
+            if (foundSamsung.length > 0) {
+                return cy.wrap(foundSamsung.first());
+            }
             const found = Cypress.$($cards).filter((i, el) => Cypress.$(el).find('button').text().includes('Adauga in Cos'));
             return cy.wrap(found.first());
         });
@@ -30,7 +38,6 @@ class ShoppingPage {
             return cy.wrap(cardSelector).find('p.product-new-price sup').then($sup => {
                 const supText = $sup.text().replace(/[^0-9]/g, '').trim().padStart(2, '0');
                 const price = parseFloat(`${intPart}.${supText}`);
-                cy.log('Extracted price:', price);
                 return cy.wrap(price);
             });
         });
@@ -63,7 +70,6 @@ class ShoppingPage {
             let supText = $el.find('sup').text().replace(/[^0-9]/g, '').trim().padStart(2, '0');
             if (!supText) supText = '00';
             const price = parseFloat(`${intPart}.${supText}`);
-            cy.log('Extracted summary price:', price);
             return cy.wrap(price);
         });
     }
